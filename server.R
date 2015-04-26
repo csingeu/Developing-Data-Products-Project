@@ -3,18 +3,17 @@
 # ====================================
 
 library(shiny)
-library(MASS)
-
-# Formula to predict fuel consumption
-# (as estimated in regression model course)
+# library(MASS)
+library(datasets)
 data(mtcars)
 
-model <- lm(mpg ~ wt+cyl+disp+hp+am, mtcars)
-step <- stepAIC(model)
+# Formula to predict fuel consumption
+# model <- lm(mpg ~ wt+cyl+disp+hp+am, mtcars)
+# step <- stepAIC(model)
 
 
 mpg <- function(wt, cyl, hp){
-        out <- step$coeff[1] + step$coeff[2] * wt + step$coeff[3] * cyl + step$coeff[4] * hp
+        out <- 38.75179 -3.16697 * wt - 0.94162 * cyl - 0.01804 * hp
         round(out,2)
 }
 
